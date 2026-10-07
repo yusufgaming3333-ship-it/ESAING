@@ -1,0 +1,929 @@
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESAİNG | Öğretmen Platformu</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:#f6f7fb;
+    color:#171923;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid #e8e9ef;
+}
+
+nav{
+    max-width:1250px;
+    margin:auto;
+    min-height:74px;
+    padding:12px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:900;
+    color:#625bf6;
+}
+
+.logo span{color:#171923}
+
+.menu{
+    display:flex;
+    gap:4px;
+}
+
+.menu button{
+    border:0;
+    background:transparent;
+    padding:11px 13px;
+    border-radius:10px;
+    font-weight:700;
+    cursor:pointer;
+    color:#424552;
+}
+
+.menu button:hover{
+    background:#eeeeff;
+    color:#625bf6;
+}
+
+.teacher{
+    border:0;
+    background:#171923;
+    color:white;
+    padding:12px 17px;
+    border-radius:11px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.hero{
+    max-width:1250px;
+    margin:auto;
+    padding:80px 20px 60px;
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:55px;
+    align-items:center;
+}
+
+.badge{
+    display:inline-block;
+    background:#ecebff;
+    color:#5049d9;
+    padding:9px 15px;
+    border-radius:50px;
+    font-size:14px;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:64px;
+    line-height:1.02;
+    letter-spacing:-3px;
+    margin-bottom:20px;
+}
+
+.hero h1 span{color:#625bf6}
+
+.hero p{
+    max-width:650px;
+    color:#6c7180;
+    font-size:18px;
+    line-height:1.65;
+    margin-bottom:28px;
+}
+
+.primary{
+    border:0;
+    background:#625bf6;
+    color:white;
+    padding:15px 23px;
+    border-radius:12px;
+    font-size:15px;
+    font-weight:800;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(98,91,246,.25);
+}
+
+.primary:hover{
+    transform:translateY(-2px);
+}
+
+.panel{
+    background:white;
+    padding:28px;
+    border-radius:25px;
+    box-shadow:0 25px 70px rgba(20,25,50,.10);
+}
+
+.panel h2{
+    margin-bottom:20px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:13px;
+}
+
+.stat{
+    padding:21px;
+    border-radius:17px;
+    background:#f4f4ff;
+}
+
+.stat strong{
+    display:block;
+    font-size:18px;
+    margin-bottom:5px;
+}
+
+.stat small{
+    color:#777d8c;
+}
+
+.icon{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.search{
+    max-width:850px;
+    margin:0 auto 40px;
+    padding:0 20px;
+    display:flex;
+    gap:9px;
+}
+
+.search input{
+    flex:1;
+    border:1px solid #e2e4eb;
+    outline:none;
+    background:white;
+    padding:16px;
+    border-radius:13px;
+    font-size:15px;
+}
+
+.search button{
+    border:0;
+    background:#171923;
+    color:white;
+    padding:0 23px;
+    border-radius:13px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.content{
+    max-width:1250px;
+    margin:auto;
+    padding:10px 20px 90px;
+}
+
+.box{
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 10px 35px rgba(20,25,50,.06);
+}
+
+.box h2{
+    font-size:34px;
+    margin-bottom:9px;
+}
+
+.desc{
+    color:#737987;
+    margin-bottom:28px;
+}
+
+.classes{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.card{
+    background:white;
+    border:2px solid #ececf1;
+    border-radius:20px;
+    padding:25px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    border-color:#625bf6;
+    box-shadow:0 12px 30px rgba(98,91,246,.10);
+}
+
+.class-number{
+    width:60px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    border-radius:17px;
+    font-size:23px;
+    font-weight:900;
+    margin-bottom:16px;
+}
+
+.c5{background:#6366f1}
+.c6{background:#06b6d4}
+.c7{background:#10b981}
+.c8{background:#f59e0b}
+
+.units{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+}
+
+.unit{
+    border:0;
+    padding:20px 10px;
+    border-radius:14px;
+    background:#171923;
+    color:white;
+    cursor:pointer;
+    font-weight:800;
+}
+
+.unit:hover{
+    background:#625bf6;
+}
+
+.actions{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:25px;
+}
+
+.action{
+    border:0;
+    padding:22px;
+    border-radius:16px;
+    background:#eeeeff;
+    color:#5049d9;
+    font-weight:800;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.action:hover{
+    background:#625bf6;
+    color:white;
+}
+
+.back{
+    border:0;
+    background:#171923;
+    color:white;
+    padding:10px 16px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-bottom:20px;
+    font-weight:700;
+}
+
+.eba{
+    width:100%;
+    height:70vh;
+    border:0;
+    border-radius:18px;
+    margin-top:22px;
+    background:#f2f3f7;
+}
+
+.materials{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.material{
+    background:#f5f5ff;
+    padding:25px;
+    border-radius:18px;
+}
+
+.material .icon{
+    font-size:38px;
+}
+
+.material p{
+    color:#747987;
+    line-height:1.5;
+    margin-top:8px;
+}
+
+.smart{
+    text-align:center;
+    padding:75px 25px;
+    border-radius:25px;
+    color:white;
+    background:linear-gradient(135deg,#625bf6,#302b83);
+}
+
+.smart h2{
+    font-size:43px;
+    margin-bottom:12px;
+}
+
+.smart p{
+    color:#e4e4ff;
+    margin-bottom:25px;
+}
+
+.smart button{
+    border:0;
+    background:white;
+    color:#5049d9;
+    padding:15px 24px;
+    border-radius:12px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+footer{
+    background:#090d17;
+    color:white;
+    text-align:center;
+    padding:45px 20px;
+}
+
+footer p{
+    color:#969cab;
+    margin-top:8px;
+}
+
+@media(max-width:950px){
+    .menu{display:none}
+    .hero{grid-template-columns:1fr}
+    .classes{grid-template-columns:1fr 1fr}
+    .units{grid-template-columns:1fr 1fr}
+    .actions{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:600px){
+    .hero h1{font-size:44px}
+    .classes,.units,.actions,.materials{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+
+<div class="logo">E<span>SAİNG</span></div>
+
+<div class="menu">
+<button onclick="home()">Ana Sayfa</button>
+<button onclick="books()">📚 Kitaplar</button>
+<button onclick="listening()">🎧 Listening</button>
+<button onclick="materials()">📝 Materyaller</button>
+<button onclick="smartBoard()">🖥️ Akıllı Tahta</button>
+</div>
+
+<button class="teacher" onclick="teacherLogin()">👨‍🏫 Öğretmen</button>
+
+</nav>
+</header>
+
+<section class="hero">
+
+<div>
+
+<div class="badge">
+✨ Ortaokul İngilizce Öğretmenleri İçin
+</div>
+
+<h1>
+Dersini
+<span>kolaylaştır.</span>
+</h1>
+
+<p>
+ESAİNG; ortaokul İngilizce öğretmenlerinin
+kitap, ünite, listening ve EBA içeriklerine
+daha hızlı ulaşabilmesi için tasarlanmış
+modern bir eğitim platformudur.
+</p>
+
+<button class="primary" onclick="books()">
+📚 Kitaplara Başla
+</button>
+
+</div>
+
+<div class="panel">
+
+<h2>ESAİNG Panel</h2>
+
+<div class="stats">
+
+<div class="stat">
+<div class="icon">📚</div>
+<strong>Kitaplar</strong>
+<small>5–8. sınıflar</small>
+</div>
+
+<div class="stat">
+<div class="icon">🎧</div>
+<strong>Listening</strong>
+<small>Dinleme içerikleri</small>
+</div>
+
+<div class="stat">
+<div class="icon">🌐</div>
+<strong>EBA</strong>
+<small>Resmî içerikler</small>
+</div>
+
+<div class="stat">
+<div class="icon">🖥️</div>
+<strong>Akıllı Tahta</strong>
+<small>Tam ekran</small>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="search">
+
+<input
+id="search"
+placeholder="🔎 5. sınıf, Unit 1, listening..."
+>
+
+<button onclick="searchSite()">Ara</button>
+
+</div>
+
+<main id="content" class="content">
+
+<div class="box">
+
+<h2>👋 Hoş geldin!</h2>
+
+<p class="desc">
+Dersine başlamak için sınıfını seç.
+</p>
+
+<div class="classes">
+${""}
+</div>
+
+</div>
+
+</main>
+
+<footer>
+<h2>ESAİNG</h2>
+<p>Ortaokul İngilizce öğretmenleri için modern eğitim platformu.</p>
+</footer>
+
+<script>
+
+const EBA = {
+    5:"https://ingilizce.eba.gov.tr/courses?course=5",
+    6:"https://ingilizce.eba.gov.tr/courses?course=6",
+    7:"https://ingilizce.eba.gov.tr/courses?course=7",
+    8:"https://ingilizce.eba.gov.tr/courses?course=8"
+};
+
+const unitNames = {
+5:[
+"Hello!",
+"My Town",
+"Games and Hobbies",
+"My Daily Routine",
+"Health",
+"Movies",
+"Party Time",
+"Fitness",
+"The Animal Shelter",
+"Festivals"
+],
+6:[
+"Life",
+"Yummy Breakfast",
+"Downtown",
+"Weather and Emotions",
+"At the Fair",
+"Occupations",
+"Holidays",
+"Bookworms",
+"Saving the Planet",
+"Democracy"
+],
+7:[
+"Appearance and Personality",
+"Sports",
+"Biographies",
+"Wild Animals",
+"Television",
+"Celebrations",
+"Dreams",
+"Public Buildings",
+"Environment",
+"Planets"
+],
+8:[
+"Friendship",
+"Teen Life",
+"In the Kitchen",
+"On the Phone",
+"The Internet",
+"Adventures",
+"Tourism",
+"Chores",
+"Science",
+"Natural Forces"
+]
+};
+
+function scroll(){
+
+document.getElementById("content")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+function home(){
+
+location.reload();
+
+}
+
+function classCard(n){
+
+return `
+<div class="card" onclick="showClass(${n})">
+
+<div class="class-number c${n}">
+${n}
+</div>
+
+<h3>${n}. Sınıf</h3>
+
+<p style="margin-top:8px;color:#777">
+İngilizce içerikleri
+</p>
+
+</div>
+`;
+
+}
+
+function books(){
+
+document.getElementById("content").innerHTML=`
+
+<div class="box">
+
+<h2>📚 Kitaplar</h2>
+
+<p class="desc">
+Sınıfını seçerek ünitelerine ulaş.
+</p>
+
+<div class="classes">
+
+${classCard(5)}
+${classCard(6)}
+${classCard(7)}
+${classCard(8)}
+
+</div>
+
+</div>
+`;
+
+scroll();
+
+}
+
+function showClass(n){
+
+let html="";
+
+unitNames[n].forEach((name,i)=>{
+
+html+=`
+
+<button class="unit"
+onclick="showUnit(${n},${i+1})">
+
+📖 Unit ${i+1}<br>
+<span style="font-size:12px;font-weight:500">
+${name}
+</span>
+
+</button>
+
+`;
+
+});
+
+document.getElementById("content").innerHTML=`
+
+<div class="box">
+
+<button class="back" onclick="books()">
+← Sınıflara Dön
+</button>
+
+<h2>📚 ${n}. Sınıf</h2>
+
+<p class="desc">
+Ünite seç.
+</p>
+
+<div class="units">
+${html}
+</div>
+
+</div>
+`;
+
+scroll();
+
+}
+
+function showUnit(n,u){
+
+let name=unitNames[n][u-1];
+
+document.getElementById("content").innerHTML=`
+
+<div class="box">
+
+<button class="back"
+onclick="showClass(${n})">
+← Üniteler
+</button>
+
+<h2>
+📖 Unit ${u}
+</h2>
+
+<p class="desc">
+${name}
+</p>
+
+<div class="actions">
+
+<button class="action"
+onclick="openEBA(${n})">
+📘 Kitabı Aç
+</button>
+
+<button class="action"
+onclick="openEBA(${n})">
+🎧 Listening
+</button>
+
+<button class="action"
+onclick="openEBA(${n})">
+🌐 EBA İçeriği
+</button>
+
+</div>
+
+<iframe
+class="eba"
+src="${EBA[n]}"
+title="EBA">
+</iframe>
+
+</div>
+`;
+
+scroll();
+
+}
+
+function openEBA(n){
+
+window.open(
+EBA[n],
+"_blank"
+);
+
+}
+
+function listening(){
+
+document.getElementById("content").innerHTML=`
+
+<div class="box">
+
+<h2>🎧 Listening</h2>
+
+<p class="desc">
+Listening içeriği için sınıfını seç.
+</p>
+
+<div class="classes">
+
+${classCard(5)}
+${classCard(6)}
+${classCard(7)}
+${classCard(8)}
+
+</div>
+
+</div>
+`;
+
+scroll();
+
+}
+
+function materials(){
+
+document.getElementById("content").innerHTML=`
+
+<div class="box">
+
+<h2>📝 Öğretmen Materyalleri</h2>
+
+<p class="desc">
+ESAİNG öğretmen alanı.
+</p>
+
+<div class="materials">
+
+<div class="material">
+<div class="icon">📚</div>
+<h3>Kitaplar</h3>
+<p>
+Sınıf ve ünite içeriklerine hızlı erişim.
+</p>
+</div>
+
+<div class="material">
+<div class="icon">🎧</div>
+<h3>Listening</h3>
+<p>
+Dinleme içeriklerine hızlı ulaş.
+</p>
+</div>
+
+<div class="material">
+<div class="icon">🖥️</div>
+<h3>Akıllı Tahta</h3>
+<p>
+Ders sırasında tam ekran kullanım.
+</p>
+</div>
+
+</div>
+
+</div>
+`;
+
+scroll();
+
+}
+
+function smartBoard(){
+
+document.getElementById("content").innerHTML=`
+
+<div class="smart">
+
+<h2>🖥️ Akıllı Tahta Modu</h2>
+
+<p>
+ESAİNG'i sınıfta tam ekran kullan.
+</p>
+
+<button onclick="fullscreen()">
+🚀 Tam Ekranı Başlat
+</button>
+
+</div>
+`;
+
+scroll();
+
+}
+
+function fullscreen(){
+
+if(document.documentElement.requestFullscreen){
+
+document.documentElement
+.requestFullscreen()
+.catch(()=>{});
+
+}
+
+}
+
+function teacherLogin(){
+
+alert(
+"👨‍🏫 Öğretmen giriş sistemi yakında eklenecek!"
+);
+
+}
+
+function searchSite(){
+
+let q=document
+.getElementById("search")
+.value
+.toLowerCase()
+.trim();
+
+if(q.includes("5")){
+
+showClass(5);
+
+}
+
+else if(q.includes("6")){
+
+showClass(6);
+
+}
+
+else if(q.includes("7")){
+
+showClass(7);
+
+}
+
+else if(q.includes("8")){
+
+showClass(8);
+
+}
+
+else if(q.includes("kitap")){
+
+books();
+
+}
+
+else if(q.includes("listening")){
+
+listening();
+
+}
+
+else{
+
+alert("Sonuç bulunamadı.");
+
+}
+
+}
+
+/* ANA SAYFADAKİ SINIFLARI OLUŞTUR */
+
+document.querySelector(".classes").innerHTML =
+classCard(5)+
+classCard(6)+
+classCard(7)+
+classCard(8);
+
+</script>
+
+</body>
+</html>
+```
